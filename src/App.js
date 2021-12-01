@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route, Link } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Posts from "./pages/Posts";
+import RQPosts from "./pages/RQPosts";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav className="nav">
+        <ul className="nav__items">
+          <li className="nav__item">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="nav__item">
+            <Link to="/posts">Posts</Link>
+          </li>
+          <li className="nav__item">
+            <Link to="/rq-Posts">rq-Posts</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/rq-Posts" element={<RQPosts />} />
+      </Routes>
     </div>
   );
 }
