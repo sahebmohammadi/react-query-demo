@@ -4,6 +4,15 @@ import axios from "axios";
 const fetchPosts = () => {
   return axios.get("http://localhost:3001/posts");
 };
+
+const onSuccess = (data) => {
+  console.log("pefrom side effect after data fetching", data);
+};
+
+const onError = (error) => {
+  console.log("perform side effect after encountering error", error);
+};
+
 const RQPosts = () => {
   // * accepts at least 2 parameters
   // 1. unique ky as routers
@@ -13,8 +22,15 @@ const RQPosts = () => {
     "postsData",
     fetchPosts,
     {
-      // cacheTime: 5000,
-      // staleTime: 20000,
+      onSuccess,
+      onError,
+      select: (data) => {
+        const transformedData = data.data.map((post) => ({
+          id: post.id,
+          author: post.author,
+        }));
+        return transformedData;
+      },
     }
   );
 
@@ -31,9 +47,9 @@ const RQPosts = () => {
       {data && (
         <div>
           <h2>Post data</h2>
-          {data?.data.map((post) => (
+          {data.map((post) => (
             <li key={post.id}>
-              {post.title} - {post.author}
+              {post.id} - {post.author}
             </li>
           ))}
         </div>
