@@ -2,26 +2,32 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 const fetchPosts = () => {
-  return axios.get("http://localhost:3001/posssts");
+  return axios.get("http://localhost:3001/posts");
 };
 const RQPosts = () => {
-  
   // * accepts at least 2 parameters
   // 1. unique ky as routers
   // 2. afunction that returns a promize
 
-  const { isLoading, error, data } = useQuery("postsData", fetchPosts);
+  const { isLoading, error, data, isError, isFetching } = useQuery(
+    "postsData",
+    fetchPosts,
+    {
+      // cacheTime: 5000,
+      // staleTime: 20000,
+    }
+  );
 
-  console.log(isLoading, error, data);
+  console.log({ isFetching, isLoading });
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <h2>Loading ...</h2>;
 
-  if (error) return "An error has occurred: " + error.message;
+  if (isError) return "An error has occurred: " + error.message;
 
   return (
     <div>
       {/* {isLoading && <p>loadig...</p>} */}
-      {/* {error && !isLoading && <p>{error.message}</p>} */}
+      {/* {isError && <p>{error.message}</p>} */}
       {data && (
         <div>
           <h2>Post data</h2>

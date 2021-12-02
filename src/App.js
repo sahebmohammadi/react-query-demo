@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import Posts from "./pages/Posts";
 import RQPosts from "./pages/RQPosts";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 }
