@@ -1,4 +1,5 @@
-import usePostQuery from "../hooks/usePostQuery";
+import { Link } from "react-router-dom";
+import usePostsQuery from "../hooks/usePostsQuery";
 
 const onSuccess = (data) => {
   console.log("pefrom side effect after data fetching", data);
@@ -13,7 +14,7 @@ const RQPosts = () => {
   // 1. unique ky as routers
   // 2. afunction that returns a promize
 
-  const { isLoading, error, data, isError, isFetching } = usePostQuery(
+  const { isLoading, error, data, isError, isFetching } = usePostsQuery(
     onError,
     onSuccess
   );
@@ -32,9 +33,11 @@ const RQPosts = () => {
         <div>
           <h2>Post data</h2>
           {data.map((post) => (
-            <li key={post.id}>
-              {post.id} - {post.author}
-            </li>
+            <Link to={`/rq-post/${post.id}`}>
+              <li key={post.id}>
+                {post.id} - {post.author}
+              </li>
+            </Link>
           ))}
         </div>
       )}

@@ -5,6 +5,7 @@ import Posts from "./pages/Posts";
 import RQPosts from "./pages/RQPosts";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import RQPost from "./pages/RQPost";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +30,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/posts" element={<Posts />} />
-            <Route path="/rq-Posts" element={<RQPosts />} />
+            <Route path="/rq-posts" element={<RQPosts />} />
+            <Route path="/rq-post/:postId" element={<RQPost />} />
           </Routes>
         </div>
       </BrowserRouter>
