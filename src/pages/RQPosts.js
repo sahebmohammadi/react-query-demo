@@ -1,9 +1,4 @@
-import { useQuery } from "react-query";
-import axios from "axios";
-
-const fetchPosts = () => {
-  return axios.get("http://localhost:3001/posts");
-};
+import usePostQuery from "../hooks/usePostQuery";
 
 const onSuccess = (data) => {
   console.log("pefrom side effect after data fetching", data);
@@ -18,20 +13,9 @@ const RQPosts = () => {
   // 1. unique ky as routers
   // 2. afunction that returns a promize
 
-  const { isLoading, error, data, isError, isFetching } = useQuery(
-    "postsData",
-    fetchPosts,
-    {
-      onSuccess,
-      onError,
-      select: (data) => {
-        const transformedData = data.data.map((post) => ({
-          id: post.id,
-          author: post.author,
-        }));
-        return transformedData;
-      },
-    }
+  const { isLoading, error, data, isError, isFetching } = usePostQuery(
+    onError,
+    onSuccess
   );
 
   console.log({ isFetching, isLoading });
