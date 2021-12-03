@@ -6,6 +6,7 @@ import RQPosts from "./pages/RQPosts";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import RQPost from "./pages/RQPost";
+import RQParallel from "./pages/RQParallelQueries";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,9 @@ function App() {
               <li className="nav__item">
                 <Link to="/rq-Posts">rq-Posts</Link>
               </li>
+              <li className="nav__item">
+                <Link to="/rq-Paralle">parallel queries</Link>
+              </li>
             </ul>
           </nav>
           <Routes>
@@ -32,6 +36,7 @@ function App() {
             <Route path="/posts" element={<Posts />} />
             <Route path="/rq-posts" element={<RQPosts />} />
             <Route path="/rq-post/:postId" element={<RQPost />} />
+            <Route path="/rq-parallel" element={<RQParallel />} />
           </Routes>
         </div>
       </BrowserRouter>

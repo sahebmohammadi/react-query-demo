@@ -15,5 +15,22 @@
       "title": "post -3",
       "author": "bruce lee 2 "
     }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "React.js",
+      "author": "Saheb mim"
+    },
+    {
+      "id": 2,
+      "title": "Node.js",
+      "author": "john smith"
+    },
+    {
+      "id": 3,
+      "title": "Vue.js",
+      "author": "hasan zirak"
+    }
   ]
 }

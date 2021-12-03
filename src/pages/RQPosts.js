@@ -33,7 +33,7 @@ const RQPosts = () => {
         <div>
           <h2>Post data</h2>
           {data.map((post) => (
-            <Link to={`/rq-post/${post.id}`}>
+            <Link to={`/rq-post/${post.id}`} key={post.id}>
               <li key={post.id}>
                 {post.id} - {post.author}
               </li>
