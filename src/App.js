@@ -27,7 +27,7 @@ function App() {
                 <Link to="/rq-Posts">rq-Posts</Link>
               </li>
               <li className="nav__item">
-                <Link to="/rq-Paralle">parallel queries</Link>
+                <Link to="/rq-Parallel">parallel queries</Link>
               </li>
             </ul>
           </nav>
