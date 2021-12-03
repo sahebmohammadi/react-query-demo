@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import RQPost from "./pages/RQPost";
 import RQParallel from "./pages/RQParallelQueries";
+import RQDynamicParallel from "./pages/RQDynamicParalleQueries";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,9 @@ function App() {
               <li className="nav__item">
                 <Link to="/rq-Parallel">parallel queries</Link>
               </li>
+              <li className="nav__item">
+                <Link to="/rq-dynamic-parallel">dynamic parallel queries</Link>
+              </li>
             </ul>
           </nav>
           <Routes>
@@ -37,6 +41,10 @@ function App() {
             <Route path="/rq-posts" element={<RQPosts />} />
             <Route path="/rq-post/:postId" element={<RQPost />} />
             <Route path="/rq-parallel" element={<RQParallel />} />
+            <Route
+              path="/rq-dynamic-parallel"
+              element={<RQDynamicParallel productsId={[1, 3]} />}
+            />
           </Routes>
         </div>
       </BrowserRouter>
